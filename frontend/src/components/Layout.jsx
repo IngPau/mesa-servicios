@@ -23,8 +23,12 @@ export default function Layout() {
     <div className="app">
       <nav className="menu" aria-label="Menú principal">
         <div className="marca">
-          <span className="marca__icono" aria-hidden="true" />
-          <span>Mesa de<br />Servicios</span>
+          <img 
+            src="/logo2.png" 
+            alt="Logo Sanatorio Santa Cruz" 
+            className="marca__icono" 
+          />
+          <span>Sanatorio<br />Santa Cruz</span>
         </div>
 
         <ul className="menu__lista">

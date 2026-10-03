@@ -6,17 +6,18 @@
    </form>
    {duplicados && <section className="duplicados" role="alert"> <h2/> <ul className="duplicados__lista"><li className="duplicados__item">…</li></ul> <div className="acciones">…</div> </section>} </div> */
 .nuevo { max-width: 760px; }
-.nuevo__destino { background: var(--verde-claro); border: 1px solid #a8d0cd; color: var(--verde-oscuro); border-radius: var(--radio-chico); padding: .55rem .8rem; font-size: .95rem; }
-.nuevo__especificos { border: 1px dashed #9fb1b6; border-radius: var(--radio); padding: 1rem; margin: 0; display: grid; gap: 1rem; }
-.nuevo__especificos legend { padding: 0 .4rem; font-weight: 700; }
+.nuevo__destino { background: var(--azul-claro); border: 1px solid #bae6fd; color: var(--azul-oscuro); border-radius: var(--radio-chico); padding: .55rem .8rem; font-size: .95rem; }
+.nuevo__especificos { border: 1px dashed var(--borde); border-radius: var(--radio); padding: 1rem; margin: 0; display: grid; gap: 1rem; }
+.nuevo__especificos legend { padding: 0 .4rem; font-weight: 700; color: var(--azul-oscuro); }
 .nuevo__acciones { display: flex; justify-content: flex-end; gap: .6rem; padding-top: .5rem; }
 
+/* El bloque de duplicados conserva el tono amarillo/ámbar por ser un estado de advertencia */
 .duplicados { background: var(--aviso-fondo); border: 1px solid #f0d78c; border-radius: var(--radio); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
 .duplicados h2 { color: #7a5200; }
 .duplicados__lista { list-style: none; margin: .75rem 0 1rem; padding: 0; display: grid; gap: .5rem; }
 .duplicados__item { background: #fff; border: 1px solid #ecd9a0; border-radius: var(--radio-chico); padding: .6rem .8rem; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .7rem; }
-.duplicados__codigo { font-weight: 700; }
+.duplicados__codigo { font-weight: 700; color: var(--azul-medio); }
 .duplicados__fecha { margin-left: auto; font-size: .85rem; color: var(--texto-suave); }
 
 .nuevo__exito { text-align: center; padding: 1.5rem 1rem; }
-.nuevo__exito strong { font-size: 1.4rem; display: block; margin: .3rem 0 1rem; }
+.nuevo__exito strong { font-size: 1.4rem; display: block; margin: .3rem 0 1rem; color: var(--azul-medio); }

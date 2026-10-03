@@ -9,6 +9,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
+  const [mostrarPassword, setMostrarPassword] = useState(false); // Estado para alternar visibilidad
   const [error, setError] = useState('');
   const [enviando, setEnviando] = useState(false);
 
@@ -30,44 +31,76 @@ export default function Login() {
     <div className="login">
       <aside className="login__lateral">
         <div className="login__marca">
-          <span className="login__logo" aria-hidden="true" />
-          <span>Mesa de<br />Servicios</span>
+          <img 
+            src="/logo2.png" 
+            alt="Logo Sanatorio Santa Cruz" 
+            className="login__logo" 
+          />
+          <span>Sanatorio<br />Santa Cruz</span>
         </div>
 
         <div className="login__mensaje">
           <h1>Cada solicitud del hospital, en un solo lugar.</h1>
           <p>Registra fallas, da seguimiento y consulta qué pasó con cada solicitud.</p>
-          <ul className="login__flujo" aria-label="Recorrido de una solicitud">
-            <li>Pendiente</li>
-            <li>Asignado</li>
-            <li>En proceso</li>
-            <li>Resuelto</li>
-            <li>Cerrado</li>
-          </ul>
         </div>
 
-        <small className="login__pie">Hospital · Uso interno</small>
+        <small className="login__pie">Sanatorio Santa Cruz · Uso interno</small>
       </aside>
 
       <section className="login__panel">
         <div className="login__caja">
           <h2>Iniciar sesión</h2>
-          <p className="login__subtitulo">Ingresa con tu usuario del hospital.</p>
-
           {error && <div className="aviso aviso--error" role="alert">{error}</div>}
 
           <form className="formulario" onSubmit={manejarEnvio}>
             <div className="campo">
               <label htmlFor="usuario">Usuario</label>
-              <input id="usuario" className="input" value={usuario} autoComplete="username"
-                     onChange={(e) => setUsuario(e.target.value)} required autoFocus />
+              <input 
+                id="usuario" 
+                className="input" 
+                value={usuario} 
+                autoComplete="username"
+                onChange={(e) => setUsuario(e.target.value)} 
+                required 
+                autoFocus 
+              />
             </div>
+            
             <div className="campo">
               <label htmlFor="password">Contraseña</label>
-              <input id="password" type="password" className="input" value={password}
-                     autoComplete="current-password"
-                     onChange={(e) => setPassword(e.target.value)} required />
+              <div className="campo__password">
+                <input 
+                  id="password" 
+                  type={mostrarPassword ? 'text' : 'password'} 
+                  className="input" 
+                  value={password}
+                  autoComplete="current-password"
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required 
+                />
+                <button 
+                  type="button" 
+                  className="btn-ojo"
+                  onClick={() => setMostrarPassword(!mostrarPassword)}
+                  aria-label={mostrarPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                >
+                  {mostrarPassword ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                      <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                      <path d="M6.61 6.61A13.52 13.52 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                      <line x1="2" y1="2" x2="22" y2="22"></line>
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
+
             <button type="submit" className="btn" disabled={enviando}>
               {enviando ? 'Ingresando...' : 'Ingresar'}
             </button>

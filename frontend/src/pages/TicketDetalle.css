@@ -5,14 +5,15 @@
      <aside className="detalle__lateral">  (estado, prioridad, acciones)  </aside>
    </div> */
 .detalle__encabezado { margin-bottom: 1.25rem; }
-.detalle__codigo { color: var(--texto-suave); font-weight: 700; margin-bottom: .15rem; }
-.detalle__encabezado h1 { margin: 0 0 .6rem; }
+.detalle__codigo { color: var(--azul-medio); font-weight: 700; margin-bottom: .15rem; }
+.detalle__encabezado h1 { margin: 0 0 .6rem; color: var(--azul-oscuro); }
 .detalle__etiquetas { display: flex; flex-wrap: wrap; gap: .5rem; }
 
 .detalle { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.25rem; align-items: start; }
 .detalle__lateral { position: sticky; top: 1rem; }
 .detalle__descripcion { white-space: pre-wrap; overflow-wrap: anywhere; }
 
+/* El cuadro de solución mantiene el tono verde de éxito definido en global.css */
 .detalle__solucion { border-left: 4px solid var(--exito); background: var(--exito-fondo); padding: .85rem 1rem; border-radius: 0 var(--radio-chico) var(--radio-chico) 0; }
 .detalle__solucion h3 { color: #14532d; }
 

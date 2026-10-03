@@ -15,9 +15,9 @@
   padding: clamp(2rem, 5vw, 3.5rem);
   color: #cfe3e4;
   background:
-    radial-gradient(circle at 12% 8%, rgba(46, 160, 160, .35), transparent 45%),
-    radial-gradient(circle at 95% 95%, rgba(27, 111, 115, .55), transparent 50%),
-    linear-gradient(160deg, #0d2c32 0%, #10343a 55%, #0b2428 100%);
+    radial-gradient(circle at 12% 8%, rgba(59, 130, 246, 0.4), transparent 45%),
+    radial-gradient(circle at 95% 95%, rgba(29, 78, 216, 0.55), transparent 50%),
+    linear-gradient(160deg, #0a1c36 0%, #103b7b 55%, #061124 100%);
 }
 
 .login__lateral::before {
@@ -37,12 +37,9 @@
 
 .login__marca { display: flex; align-items: center; gap: .75rem; color: #fff; font-weight: 700; line-height: 1.15; font-size: 1.05rem; }
 .login__logo {
-  width: 40px; height: 40px; border-radius: 11px; flex: none;
-  background:
-    linear-gradient(#fff, #fff) center / 18px 4px no-repeat,
-    linear-gradient(#fff, #fff) center / 4px 18px no-repeat,
-    linear-gradient(145deg, #2a9a9c, #1b6f73);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .25);
+  width: 75px; 
+  height: 70px; 
+  flex: none;
 }
 
 .login__mensaje h1 {
@@ -116,7 +113,10 @@
   font-size: 1.02rem;
   border-radius: 9px;
   border: 0;
-  background: linear-gradient(180deg, #218086, #1b6f73);
+  background: 
+    radial-gradient(circle at 12% 8%, rgba(59, 130, 246, 0.4), transparent 45%),
+    radial-gradient(circle at 95% 95%, rgba(29, 78, 216, 0.55), transparent 50%),
+    linear-gradient(160deg, #0a1c36 0%, #103b7b 55%, #061124 100%);
   box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 6px 14px -4px rgba(27, 111, 115, .55);
   transition: transform .12s, box-shadow .12s, filter .12s;
 }
@@ -134,4 +134,32 @@
   .login__flujo { margin-top: 1rem; }
   .login__panel { align-items: start; padding-top: 1.5rem; }
   .login__caja { padding: 1.75rem 1.4rem; }
+}
+
+.campo__password {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.campo__password .input {
+  width: 100%;
+  padding-right: 2.5rem; /* Evita que el texto escrito quede debajo del botón */
+}
+
+.btn-ojo {
+  position: absolute;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn-ojo:hover {
+  color: #1e293b;
 }
