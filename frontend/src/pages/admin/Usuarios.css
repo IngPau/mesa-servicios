@@ -1,0 +1,11 @@
+/* Usuarios.css – específico de la administración de usuarios. Importado por Usuarios.jsx */
+.usuarios__persona { display: flex; align-items: center; gap: .7rem; }
+.usuarios__avatar { width: 34px; height: 34px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: .85rem; font-weight: 700; color: var(--verde-oscuro); background: var(--verde-claro); border: 1px solid #a8d0cd; }
+.usuarios__nombre { font-weight: 700; line-height: 1.2; }
+.usuarios__login { font-size: .88rem; color: var(--texto-suave); }
+.usuarios__yo { margin-left: .4rem; font-size: .78rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--verde-medio); color: #fff; }
+
+.usuarios__rol { display: inline-block; padding: .1rem .6rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1px solid transparent; }
+.usuarios__rol--administrador { background: #ece6fa; color: #4a2f94; border-color: #cbbdf0; }
+.usuarios__rol--responsable { background: #e1edfb; color: #1a4a8a; border-color: #b5cff0; }
+.usuarios__rol--solicitante { background: #e8edef; color: #44565c; border-color: #ccd6d9; }

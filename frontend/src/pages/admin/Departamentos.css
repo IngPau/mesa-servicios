@@ -1,0 +1,4 @@
+/* Departamentos.css – específico de la administración de departamentos. Importado por Departamentos.jsx */
+.departamentos__nombre { font-weight: 700; }
+.departamentos__descripcion { color: var(--texto-suave); max-width: 460px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.departamentos__sin-descripcion { color: #9bacb1; font-style: italic; }

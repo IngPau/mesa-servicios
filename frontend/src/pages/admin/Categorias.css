@@ -1,0 +1,21 @@
+/* Categorias.css – específico de la administración de categorías. Importado por Categorias.jsx */
+.categorias__nombre { font-weight: 700; }
+.categorias__descripcion { font-size: .88rem; color: var(--texto-suave); }
+.categorias__chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.categorias__chip { font-size: .82rem; padding: .05rem .55rem; border-radius: 999px; background: var(--verde-claro); color: var(--verde-oscuro); border: 1px solid #a8d0cd; white-space: nowrap; }
+.categorias__chip--requerido::after { content: ' *'; font-weight: 700; }
+.categorias__sin-campos { color: #9bacb1; }
+
+/* Editor de campos específicos (dentro de la ventana) */
+.categorias__editor { border: 1px dashed #9fb1b6; border-radius: var(--radio); padding: 1rem; margin: 0; display: grid; gap: .75rem; }
+.categorias__editor legend { padding: 0 .4rem; font-weight: 700; }
+.categorias__editor-ayuda { margin: 0; font-size: .88rem; color: var(--texto-suave); }
+.categorias__campo { display: grid; grid-template-columns: 1fr 1fr auto auto; gap: .5rem; align-items: end; padding: .7rem; border: 1px solid var(--borde); border-radius: var(--radio-chico); background: #f8fafb; }
+.categorias__campo .campo label { font-size: .85rem; }
+.categorias__requerido { display: inline-flex; align-items: center; gap: .4rem; font-size: .9rem; font-weight: 700; padding-bottom: .55rem; white-space: nowrap; }
+.categorias__quitar { align-self: end; margin-bottom: .1rem; }
+.categorias__agregar { justify-self: start; }
+@media (max-width: 640px) {
+  .categorias__campo { grid-template-columns: 1fr; }
+  .categorias__requerido { padding-bottom: 0; }
+}

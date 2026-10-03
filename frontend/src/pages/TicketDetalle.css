@@ -1,0 +1,28 @@
+/* TicketDetalle.css – detalle del ticket. Importado por TicketDetalle.jsx
+   Marcado esperado:
+   <div className="detalle">
+     <div className="detalle__principal">  (datos, solución, historial, comentarios en .tarjeta)  </div>
+     <aside className="detalle__lateral">  (estado, prioridad, acciones)  </aside>
+   </div> */
+.detalle__encabezado { margin-bottom: 1.25rem; }
+.detalle__codigo { color: var(--azul-medio); font-weight: 700; margin-bottom: .15rem; }
+.detalle__encabezado h1 { margin: 0 0 .6rem; color: var(--azul-oscuro); }
+.detalle__etiquetas { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+.detalle { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.25rem; align-items: start; }
+.detalle__lateral { position: sticky; top: 1rem; }
+.detalle__descripcion { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* El cuadro de solución mantiene el tono verde de éxito definido en global.css */
+.detalle__solucion { border-left: 4px solid var(--exito); background: var(--exito-fondo); padding: .85rem 1rem; border-radius: 0 var(--radio-chico) var(--radio-chico) 0; }
+.detalle__solucion h3 { color: #14532d; }
+
+.detalle__panel-acciones { display: grid; gap: .6rem; }
+.detalle__panel-acciones .btn { width: 100%; }
+.detalle__formulario-accion { display: grid; gap: .6rem; padding-top: .75rem; margin-top: .5rem; border-top: 1px solid var(--borde); }
+.detalle__sin-acciones { color: var(--texto-suave); font-size: .92rem; margin: 0; }
+
+@media (max-width: 960px) {
+  .detalle { grid-template-columns: 1fr; }
+  .detalle__lateral { position: static; order: -1; }
+}

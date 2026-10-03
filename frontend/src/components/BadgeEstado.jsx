@@ -1,7 +1,12 @@
-// Muestra el estado de un ticket. Uso: <BadgeEstado estado={ticket.estado} />
-// TODO (diseño): colores por estado.
+import './Badges.css';
 import { ETIQUETAS_ESTADO } from '../utils/constantes';
 
+// Muestra el estado del ticket como una etiqueta de color.
+// Uso: <BadgeEstado estado={ticket.estado} />
 export default function BadgeEstado({ estado }) {
-  return <span>{ETIQUETAS_ESTADO[estado] || estado}</span>;
+  return (
+    <span className={`badge badge--${estado}`}>
+      {ETIQUETAS_ESTADO[estado] || estado}
+    </span>
+  );
 }
