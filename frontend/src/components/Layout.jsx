@@ -26,7 +26,7 @@ export default function Layout() {
           <img 
             src="/logo2.png" 
             alt="Logo Sanatorio Santa Cruz" 
-            className="marca__icono" 
+            className="icono_marca" 
           />
           <span>Sanatorio<br />Santa Cruz</span>
         </div>

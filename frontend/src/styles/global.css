@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 
 :root {
-  --verde-oscuro: #0a1c36;
+  --verde-oscuro: #296cc9;
   --verde-medio:  #1d4ed8;
   --verde-hover:  #155b5f;
   --verde-claro:  #e3f1f0;
@@ -79,7 +79,7 @@ textarea.input { min-height: 96px; resize: vertical; }
 .vacio { text-align: center; padding: 2.5rem 1rem; color: var(--texto-suave); }
 .cargando { padding: 2rem 0; color: var(--texto-suave); }
 
-/* ---------- Tablas (listado de tickets y pantallas de administración) ---------- */
+/* ---------- Tablas ---------- */
 .tabla-contenedor { overflow-x: auto; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); margin-bottom: 1rem; }
 .tabla { width: 100%; border-collapse: collapse; }
 .tabla th, .tabla td { text-align: left; padding: .7rem .9rem; border-bottom: 1px solid var(--borde); vertical-align: middle; }
