@@ -1,48 +1,79 @@
-// Pantalla de inicio de sesión.
-// Versión BÁSICA y sin estilos para que todo el equipo pueda entrar al sistema y probar sus pantallas.
-//
-// TODO (módulo "Base"): diseño del formulario, estado de carga del botón, mostrar/ocultar contraseña.
-// Credenciales de prueba: ver docs/CONTEXTO_PROYECTO_Y_API.md (sección 7), contraseña Clave123
+import './Login.css';
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { mensajeDeError } from '../api/cliente';
 
 export default function Login() {
-  const { usuario, login } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
-  const [nombreUsuario, setNombreUsuario] = useState('');
+  const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [enviando, setEnviando] = useState(false);
 
-  if (usuario) return <Navigate to="/tickets" replace />;
-
-  async function enviar(e) {
+  async function manejarEnvio(e) {
     e.preventDefault();
     setError('');
+    setEnviando(true);
     try {
-      await login(nombreUsuario, password);
-      navigate('/tickets');
+      await login(usuario.trim(), password);
+      navigate('/tickets', { replace: true });
     } catch (err) {
       setError(mensajeDeError(err));
+    } finally {
+      setEnviando(false);
     }
   }
 
   return (
-    <div>
-      <h1>Mesa de Servicios Hospitalarios</h1>
-      <form onSubmit={enviar}>
-        <label>
-          Usuario
-          <input value={nombreUsuario} onChange={(e) => setNombreUsuario(e.target.value)} />
-        </label>
-        <label>
-          Contraseña
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <button type="submit">Iniciar sesión</button>
-        {error && <p>{error}</p>}
-      </form>
+    <div className="login">
+      <aside className="login__lateral">
+        <div className="login__marca">
+          <span className="login__logo" aria-hidden="true" />
+          <span>Mesa de<br />Servicios</span>
+        </div>
+
+        <div className="login__mensaje">
+          <h1>Cada solicitud del hospital, en un solo lugar.</h1>
+          <p>Registra fallas, da seguimiento y consulta qué pasó con cada solicitud.</p>
+          <ul className="login__flujo" aria-label="Recorrido de una solicitud">
+            <li>Pendiente</li>
+            <li>Asignado</li>
+            <li>En proceso</li>
+            <li>Resuelto</li>
+            <li>Cerrado</li>
+          </ul>
+        </div>
+
+        <small className="login__pie">Hospital · Uso interno</small>
+      </aside>
+
+      <section className="login__panel">
+        <div className="login__caja">
+          <h2>Iniciar sesión</h2>
+          <p className="login__subtitulo">Ingresa con tu usuario del hospital.</p>
+
+          {error && <div className="aviso aviso--error" role="alert">{error}</div>}
+
+          <form className="formulario" onSubmit={manejarEnvio}>
+            <div className="campo">
+              <label htmlFor="usuario">Usuario</label>
+              <input id="usuario" className="input" value={usuario} autoComplete="username"
+                     onChange={(e) => setUsuario(e.target.value)} required autoFocus />
+            </div>
+            <div className="campo">
+              <label htmlFor="password">Contraseña</label>
+              <input id="password" type="password" className="input" value={password}
+                     autoComplete="current-password"
+                     onChange={(e) => setPassword(e.target.value)} required />
+            </div>
+            <button type="submit" className="btn" disabled={enviando}>
+              {enviando ? 'Ingresando...' : 'Ingresar'}
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,0 +1,20 @@
+/* Comentarios.css – lista y cuadro para comentar. Importado por Comentarios.jsx
+   Marcado esperado:
+   <div className="comentarios">
+     <article className="comentario">
+       <div className="comentario__cabecera"><span className="comentario__autor">Carlos</span>
+         <span className="comentario__rol">Responsable</span><span className="comentario__fecha">...</span></div>
+       <p className="comentario__texto">...</p>
+     </article>
+     <form className="comentarios__form"> <textarea className="input"/> <button className="btn"/> </form>
+   </div> */
+.comentarios { display: grid; gap: .7rem; }
+.comentario { padding: .75rem 1rem; border: 1px solid var(--borde); border-radius: var(--radio); background: #f8fafb; }
+.comentario--propio { background: var(--verde-claro); border-color: #a8d0cd; }
+.comentario__cabecera { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .6rem; margin-bottom: .25rem; }
+.comentario__autor { font-weight: 700; }
+.comentario__rol { font-size: .82rem; color: var(--texto-suave); border: 1px solid var(--borde); border-radius: 999px; padding: 0 .5rem; background: #fff; }
+.comentario__fecha { margin-left: auto; font-size: .85rem; color: var(--texto-suave); }
+.comentario__texto { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.comentarios__form { display: grid; gap: .6rem; margin-top: .5rem; }
+.comentarios__form .btn { justify-self: end; }

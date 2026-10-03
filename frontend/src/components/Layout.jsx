@@ -1,40 +1,61 @@
-// Estructura común de las pantallas internas: menú según el rol + contenido de la página.
-// TODO (diseño): estilos del menú y del contenedor. Los enlaces por rol ya están definidos.
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import './Layout.css';
+import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ROLES, ETIQUETAS_ROL } from '../utils/constantes';
 import { puedeCrearTicket } from '../utils/permisos';
+import { ETIQUETAS_ROL } from '../utils/constantes';
+
+// Barra lateral con el menú según el rol + el contenido de la página (<Outlet />).
+// En pantallas pequeñas la barra pasa a ser una franja superior (ver global.css).
+function Enlace({ to, end, children }) {
+  return (
+    <li>
+      <NavLink to={to} end={end} className={({ isActive }) => `menu__enlace${isActive ? ' activo' : ''}`}>
+        {children}
+      </NavLink>
+    </li>
+  );
+}
 
 export default function Layout() {
   const { usuario, logout } = useAuth();
-  const navigate = useNavigate();
-
-  function cerrarSesion() {
-    logout();
-    navigate('/login');
-  }
 
   return (
-    <div>
-      <header>
-        <nav>
-          <Link to="/tickets">Tickets</Link>
-          {puedeCrearTicket(usuario) && <Link to="/tickets/nuevo">Nuevo ticket</Link>}
-          {usuario.rol === ROLES.ADMINISTRADOR && (
+    <div className="app">
+      <nav className="menu" aria-label="Menú principal">
+        <div className="marca">
+          <span className="marca__icono" aria-hidden="true" />
+          <span>Mesa de<br />Servicios</span>
+        </div>
+
+        <ul className="menu__lista">
+          <Enlace to="/tickets" end>Solicitudes</Enlace>
+          {puedeCrearTicket(usuario) && <Enlace to="/tickets/nuevo">Nueva solicitud</Enlace>}
+
+          {usuario.rol === 'administrador' && (
             <>
-              <Link to="/admin/usuarios">Usuarios</Link>
-              <Link to="/admin/departamentos">Departamentos</Link>
-              <Link to="/admin/categorias">Categorías</Link>
+              <li className="menu__titulo">Administración</li>
+              <Enlace to="/admin/usuarios">Usuarios</Enlace>
+              <Enlace to="/admin/departamentos">Departamentos</Enlace>
+              <Enlace to="/admin/categorias">Categorías</Enlace>
             </>
           )}
-        </nav>
-        <div>
-          <span>{usuario.nombre} ({ETIQUETAS_ROL[usuario.rol]})</span>
-          <button onClick={cerrarSesion}>Cerrar sesión</button>
-        </div>
-      </header>
+        </ul>
 
-      <main>
+        <div className="menu__usuario">
+          <div>
+            <strong>{usuario.nombre}</strong>
+            <span>
+              {ETIQUETAS_ROL[usuario.rol] || usuario.rol}
+              {usuario.departamento_id ? ` · ${usuario.departamento_id.nombre}` : ''}
+            </span>
+          </div>
+          <button type="button" className="btn btn--menu btn--chico" onClick={logout}>
+            Cerrar sesión
+          </button>
+        </div>
+      </nav>
+
+      <main className="contenido">
         <Outlet />
       </main>
     </div>

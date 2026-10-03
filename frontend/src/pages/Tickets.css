@@ -1,0 +1,15 @@
+/* Tickets.css – listado con filtros y paginación. Importado por Tickets.jsx
+   Marcado esperado:
+   <form className="tarjeta filtros"> <div className="campo">…</div> … <div className="filtros__acciones">botones</div> </form>
+   <div className="tabla-contenedor"><table className="tabla">…<td><Link className="tickets__codigo">TK-000001</Link></td>…</table></div>
+   <nav className="paginacion">…</nav> */
+.filtros { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .75rem; align-items: end; }
+.filtros__acciones { display: flex; gap: .5rem; }
+.filtros__bandeja { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; }
+
+.tickets__codigo { white-space: nowrap; }
+.tickets__titulo { max-width: 340px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tickets__resumen { color: var(--texto-suave); margin-bottom: .6rem; font-size: .92rem; }
+.tabla tr.tickets__fila--critica td:first-child { box-shadow: inset 4px 0 0 var(--peligro); }
+
+.paginacion { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1rem 0; color: var(--texto-suave); }

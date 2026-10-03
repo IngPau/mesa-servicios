@@ -1,0 +1,33 @@
+/* Layout.css – barra lateral + contenido. Importado por Layout.jsx */
+.app { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+
+.menu { background: var(--verde-oscuro); color: #dcebec; display: flex; flex-direction: column; padding: 1.25rem .85rem; position: sticky; top: 0; height: 100vh; }
+.marca { display: flex; align-items: center; gap: .65rem; padding: 0 .4rem 1.25rem; color: #fff; font-weight: 700; line-height: 1.15; }
+.marca__icono { width: 32px; height: 32px; border-radius: 8px; flex: none; background: linear-gradient(#fff,#fff) center / 16px 4px no-repeat, linear-gradient(#fff,#fff) center / 4px 16px no-repeat, var(--verde-medio); }
+
+.menu__lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.menu__titulo { font-size: .85rem; color: #8fb0b3; padding: 1rem .6rem .35rem; }
+.menu__enlace { display: block; padding: .55rem .7rem; border-radius: var(--radio-chico); color: #dcebec; text-decoration: none; }
+.menu__enlace:hover { background: rgba(255,255,255,.08); }
+.menu__enlace.activo { background: var(--verde-claro); color: var(--verde-oscuro); font-weight: 700; }
+
+.menu__usuario { margin-top: auto; padding: .9rem .6rem 0; border-top: 1px solid rgba(255,255,255,.14); font-size: .92rem; }
+.menu__usuario strong { display: block; color: #fff; }
+.menu__usuario span { color: #8fb0b3; }
+.menu__usuario .btn { margin-top: .7rem; width: 100%; }
+.btn--menu { background: transparent; border-color: rgba(255,255,255,.35); color: #fff; }
+.btn--menu:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+
+.contenido { padding: 2rem clamp(1rem, 3vw, 2.5rem); max-width: 1180px; width: 100%; }
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; }
+  .menu { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; padding: .75rem 1rem; }
+  .marca { padding: 0; }
+  .menu__lista { flex-direction: row; flex-wrap: wrap; flex: 1 1 100%; order: 3; }
+  .menu__titulo { display: none; }
+  .menu__usuario { margin: 0 0 0 auto; padding: 0; border: 0; display: flex; align-items: center; gap: .75rem; }
+  .menu__usuario span { display: none; }
+  .menu__usuario .btn { margin: 0; width: auto; }
+  .contenido { padding: 1.25rem 1rem; }
+}

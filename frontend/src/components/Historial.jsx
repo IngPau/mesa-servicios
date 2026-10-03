@@ -1,17 +1,31 @@
-// Línea de tiempo del historial de un ticket.
+// Línea de tiempo con todo lo que le ha pasado al ticket (creación, asignación, cambios de estado).
 // Uso: <Historial historial={ticket.historial} />
-//
-// TODO: mostrar cada evento en orden cronológico con:
-//   - accion (ETIQUETAS_ACCION_HISTORIAL), estado_anterior -> estado_nuevo
-//   - quién lo hizo: evento.usuario_id.nombre (y su rol)
-//   - a quién se asignó (solo en asignaciones): evento.responsable_id?.nombre
-//   - detalle y fecha (formatearFecha)
-// Estructura de cada evento: ver "Objeto ticket" en docs/CONTEXTO_PROYECTO_Y_API.md (sección 8.4)
+import './Historial.css';
+import BadgeEstado from './BadgeEstado';
+import { ETIQUETAS_ACCION_HISTORIAL } from '../utils/constantes';
+import { formatearFecha } from '../utils/formato';
+
 export default function Historial({ historial = [] }) {
+  if (historial.length === 0) {
+    return <p className="vacio">Este ticket todavía no tiene movimientos.</p>;
+  }
+
   return (
-    <section>
-      <h3>Historial</h3>
-      <p>Pendiente de implementar ({historial.length} eventos)</p>
-    </section>
+    <ol className="historial">
+      {historial.map((h, i) => (
+        <li className="historial__item" key={`${h.fecha}-${i}`}>
+          <div className="historial__titulo">
+            <span>{ETIQUETAS_ACCION_HISTORIAL[h.accion] || h.accion}</span>
+            {h.estado_anterior && <BadgeEstado estado={h.estado_anterior} />}
+            {h.estado_anterior && h.estado_nuevo && <span aria-label="a">→</span>}
+            {h.estado_nuevo && <BadgeEstado estado={h.estado_nuevo} />}
+          </div>
+          <div className="historial__meta">
+            {h.usuario_id?.nombre || 'Sistema'} · {formatearFecha(h.fecha)}
+          </div>
+          {h.detalle && <div className="historial__detalle">{h.detalle}</div>}
+        </li>
+      ))}
+    </ol>
   );
 }

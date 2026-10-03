@@ -1,0 +1,17 @@
+/* Historial.css – línea de tiempo del ticket. Importado por Historial.jsx
+   Marcado esperado:
+   <ol className="historial">
+     <li className="historial__item">
+       <div className="historial__titulo">Cambio de estado: <BadgeEstado/> → <BadgeEstado/></div>
+       <div className="historial__meta">Carlos Méndez · 02/10/2026 10:30</div>
+       <div className="historial__detalle">Asignado a ...</div>
+     </li>
+   </ol> */
+.historial { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--borde); }
+.historial__item { position: relative; padding: 0 0 1.15rem 1rem; }
+.historial__item:last-child { padding-bottom: 0; }
+.historial__item::before { content: ''; position: absolute; left: -1.62rem; top: .4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--borde); border: 2px solid var(--superficie); }
+.historial__item:first-child::before { background: var(--verde-medio); }
+.historial__titulo { font-weight: 700; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.historial__meta { font-size: .88rem; color: var(--texto-suave); }
+.historial__detalle { margin-top: .2rem; }

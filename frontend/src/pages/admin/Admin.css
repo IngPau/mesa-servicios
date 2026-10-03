@@ -1,0 +1,16 @@
+/* Admin.css – compartido por Usuarios.jsx, Departamentos.jsx y Categorias.jsx
+   Marcado esperado:
+   <div className="admin__barra"> <input className="input"/> <select className="input"/> <button className="btn">Nuevo</button> </div>
+   <div className="tabla-contenedor"><table className="tabla"><tr className="admin__fila--inactiva">…</tr></table></div> */
+.admin__barra { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-bottom: 1rem; }
+.admin__barra .input { width: auto; min-width: 170px; flex: 1 1 170px; max-width: 280px; }
+.admin__barra .btn { margin-left: auto; }
+.admin__resumen { color: var(--texto-suave); font-size: .92rem; margin-bottom: .6rem; }
+
+.admin__estado { display: inline-flex; align-items: center; gap: .4rem; font-weight: 700; font-size: .9rem; }
+.admin__estado::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.admin__estado--activo { color: var(--exito); }
+.admin__estado--inactivo { color: var(--texto-suave); }
+.tabla tr.admin__fila--inactiva td { color: var(--texto-suave); background: #f8fafb; }
+.admin__acciones-fila { display: flex; gap: .4rem; justify-content: flex-end; flex-wrap: wrap; }
+.admin__nota { color: var(--texto-suave); font-size: .88rem; margin: 0; }

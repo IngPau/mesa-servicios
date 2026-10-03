@@ -1,0 +1,5 @@
+/* NoEncontrada.css – página 404. Importado por NoEncontrada.jsx */
+.no-encontrada { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; }
+.no-encontrada__codigo { font-size: clamp(4rem, 12vw, 7rem); font-weight: 700; line-height: 1; color: var(--verde-medio); margin: 0 0 .5rem; letter-spacing: -.03em; }
+.no-encontrada h1 { margin-bottom: .5rem; }
+.no-encontrada__texto { color: var(--texto-suave); max-width: 40ch; margin-bottom: 1.5rem; }
