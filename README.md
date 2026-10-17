@@ -39,4 +39,4 @@ Se crean **2 servicios** dentro del mismo proyecto de Railway, ambos desde este 
 
 ### 3. Conectar los dos
 - En el backend, `CORS_ORIGIN=https://TU-FRONTEND.up.railway.app` (sin `/` al final) → se redespliega solo.
-- Entra al dominio del frontend con `admin` / `Clave123`.
+- Entra al dominio del frontend
