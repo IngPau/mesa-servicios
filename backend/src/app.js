@@ -15,6 +15,7 @@ app.use('/api/usuarios', require('./routes/usuarioRoutes'));
 app.use('/api/departamentos', require('./routes/departamentoRoutes'));
 app.use('/api/categorias', require('./routes/categoriaRoutes'));
 app.use('/api/tickets', require('./routes/ticketRoutes'));
+app.use('/api/reportes', require('./routes/reporteRoutes'));
 
 app.use(noEncontrada);
 app.use(manejarErrores);

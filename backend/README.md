@@ -54,6 +54,7 @@ src/middlewares/errorHandler.js   respuestas de error uniformes
 src/routes/                  qué URL llama a qué controlador
 src/controllers/             reciben la petición y responden
 src/services/ticketService.js    TODAS las reglas de negocio de los tickets
+src/services/reporteService.js   cálculos de reportes e indicadores (R6) y exportación CSV
 src/seed.js                  datos de prueba
 postman/                     colección de pruebas
 ```
@@ -76,6 +77,8 @@ Todos (excepto login y health) requieren el header `Authorization: Bearer <token
 | `PATCH /api/tickets/:id/asignar` | administrador | Asignar responsable | R2 |
 | `PATCH /api/tickets/:id/estado` | según transición | Avanzar estado | R3 |
 | `POST /api/tickets/:id/comentarios` | relacionados | Agregar comentario | RN-16 |
+| `GET /api/reportes/resumen` | administrador | Totales, tiempos promedio y agrupaciones (filtros: `desde`, `hasta`, `departamento_id`, `categoria_id`, `prioridad`) | R6 |
+| `GET /api/reportes/exportar` | administrador | Descarga CSV (Excel) con las solicitudes filtradas | R6 |
 
 Filtros de `GET /api/tickets`: `codigo`, `estado`, `prioridad`, `categoria_id`, `departamento_id`, `desde`, `hasta` (AAAA-MM-DD), `asignado_a_mi=true`, `pagina`, `limite`.
 
@@ -98,7 +101,7 @@ Saltar pasos o retroceder devuelve error `409` indicando el flujo correcto. Un t
 | R3 Estado e historial | `ticketService.cambiarEstado`, `validarTransicion`, campo `historial` |
 | R4 Consultar y filtrar | `ticketService.listarTickets` |
 | R5 Duplicados | `ticketService.buscarDuplicados` + `forzar` en `crearTicket` |
-| R6 Reportes | **pendiente (siguiente entrega)** |
+| R6 Reportes | `services/reporteService.js` (`resumen`, `exportarCSV`) + `routes/reporteRoutes.js` |
 | R7 Usuarios y roles | `usuarioController`, `middlewares/roles.js` |
 | RNF1 Tiempos | índices en `models/Ticket.js`, paginación |
 | RNF2 Seguridad | JWT + bcrypt + `middlewares/auth.js` |

@@ -4,6 +4,8 @@ import { ROLES } from './utils/constantes';
 import RutaProtegida from './components/RutaProtegida';
 import Layout from './components/Layout';
 import Login from './pages/Login';
+import Inicio from './pages/Inicio';
+import Reportes from './pages/Reportes';
 import Tickets from './pages/Tickets';
 import TicketDetalle from './pages/TicketDetalle';
 import NuevoTicket from './pages/NuevoTicket';
@@ -19,7 +21,8 @@ export default function App() {
 
       {/* Todo lo que está dentro requiere sesión iniciada y se muestra dentro del Layout (menú) */}
       <Route element={<RutaProtegida><Layout /></RutaProtegida>}>
-        <Route index element={<Navigate to="/tickets" replace />} />
+        <Route index element={<Inicio />} />
+        <Route path="inicio" element={<Navigate to="/" replace />} />
         <Route path="tickets" element={<Tickets />} />
         <Route
           path="tickets/nuevo"
@@ -35,6 +38,7 @@ export default function App() {
         <Route path="admin/usuarios" element={<RutaProtegida roles={[ROLES.ADMINISTRADOR]}><Usuarios /></RutaProtegida>} />
         <Route path="admin/departamentos" element={<RutaProtegida roles={[ROLES.ADMINISTRADOR]}><Departamentos /></RutaProtegida>} />
         <Route path="admin/categorias" element={<RutaProtegida roles={[ROLES.ADMINISTRADOR]}><Categorias /></RutaProtegida>} />
+        <Route path="reportes" element={<RutaProtegida roles={[ROLES.ADMINISTRADOR]}><Reportes /></RutaProtegida>} />
       </Route>
 
       <Route path="*" element={<NoEncontrada />} />

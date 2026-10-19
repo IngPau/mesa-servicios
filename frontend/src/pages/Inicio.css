@@ -1,0 +1,47 @@
+/* Inicio.css – portada con bienvenida, resumen rápido y cuadros de acceso a los módulos */
+.inicio__portada {
+  display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+  background: linear-gradient(120deg, #0f3c7b 0%, #1d4ed8 100%);
+  color: #fff; border-radius: var(--radio); padding: 1.75rem 2rem; margin-bottom: 1.75rem;
+}
+.inicio__logo { width: 76px; height: 76px; object-fit: contain; flex: none; }
+.inicio__portada h1 { font-size: 2rem; margin: .1rem 0 .2rem; color: #fff; }
+.inicio__fecha { margin: 0; font-size: .9rem; color: #c7dbff; }
+.inicio__subtitulo { margin: 0; font-size: 1.1rem; color: #fff; }
+.inicio__rol { margin: .35rem 0 0; font-size: .9rem; color: #c7dbff; }
+
+.inicio__seccion { font-size: 1.1rem; margin: 0 0 .75rem; display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+.inicio__seccion span { font-size: .9rem; font-weight: 400; color: var(--texto-suave); }
+
+/* Resumen rápido */
+.inicio__resumen { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1.75rem; }
+.resumen {
+  display: flex; flex-direction: column; gap: .1rem; text-decoration: none; color: var(--texto);
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); padding: 1rem 1.15rem;
+  box-shadow: inset 4px 0 0 var(--acento, #3b74c4);
+}
+.resumen strong { font-size: 2rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.resumen span { color: var(--texto-suave); font-size: .92rem; }
+.resumen:hover { border-color: #9fb1b6; }
+.resumen--pendiente { --acento: #c99a1e; }
+.resumen--atencion  { --acento: #6b4fc4; }
+.resumen--resuelto  { --acento: #2e8b57; }
+
+/* Cuadros de módulos */
+.modulos { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+.modulo {
+  display: flex; flex-direction: column; gap: .4rem; text-decoration: none; color: var(--texto);
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio);
+  padding: 1.25rem; min-height: 170px; transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.modulo:hover { border-color: #1d4ed8; box-shadow: 0 4px 14px rgba(15, 60, 123, .12); transform: translateY(-2px); }
+.modulo__icono { width: 40px; height: 40px; padding: 8px; border-radius: 10px; background: #e1edfb; color: #1d4ed8; margin-bottom: .35rem; }
+.modulo__titulo { font-weight: 700; font-size: 1.08rem; }
+.modulo__texto { color: var(--texto-suave); font-size: .92rem; flex: 1; }
+.modulo__ir { color: #1d4ed8; font-weight: 700; font-size: .92rem; }
+
+@media (max-width: 600px) {
+  .inicio__portada { padding: 1.25rem; }
+  .inicio__portada h1 { font-size: 1.55rem; }
+  .inicio__logo { width: 56px; height: 56px; }
+}

@@ -32,6 +32,7 @@ export default function Layout() {
         </div>
 
         <ul className="menu__lista">
+          <Enlace to="/" end>Inicio</Enlace>
           <Enlace to="/tickets" end>Solicitudes</Enlace>
           {puedeCrearTicket(usuario) && <Enlace to="/tickets/nuevo">Nueva solicitud</Enlace>}
 
@@ -41,6 +42,7 @@ export default function Layout() {
               <Enlace to="/admin/usuarios">Usuarios</Enlace>
               <Enlace to="/admin/departamentos">Departamentos</Enlace>
               <Enlace to="/admin/categorias">Categorías</Enlace>
+              <Enlace to="/reportes">Reportes</Enlace>
             </>
           )}
         </ul>

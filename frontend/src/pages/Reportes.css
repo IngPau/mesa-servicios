@@ -1,0 +1,81 @@
+/* Reportes.css – indicadores, barras y tablas del módulo de reportes. Importado por Reportes.jsx
+   Usa .filtros de Tickets.css para la fila de filtros (misma apariencia que el listado). */
+.reporte__filtros { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .75rem; align-items: end; }
+.reporte__rangos { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; font-size: .92rem; color: var(--texto-suave); }
+.reporte__criterios { font-size: .92rem; color: var(--texto-suave); margin: -.25rem 0 1rem; }
+.reporte__criterios strong { color: var(--texto); }
+.reporte--actualizando { opacity: .55; transition: opacity .15s; }
+.reporte__vacio { color: var(--texto-suave); margin: 0; padding: .5rem 0; }
+.reporte__nota { font-size: .85rem; color: var(--texto-suave); margin: .75rem 0 0; }
+.reporte__bloque h2 { margin-bottom: 1rem; }
+.reporte__dos { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0 1rem; }
+.reporte__tabla .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.reporte__bloque .tabla-contenedor { margin-bottom: 0; }
+.reporte__tabla td:first-child a { white-space: nowrap; }
+
+/* ---------- Indicadores (números grandes) ---------- */
+.indicadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.indicador { background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); padding: 1rem 1.15rem; display: flex; flex-direction: column; gap: .15rem; }
+.indicador__titulo { font-size: .9rem; color: var(--texto-suave); font-weight: 700; }
+.indicador__valor { font-size: 2.1rem; line-height: 1.1; color: var(--texto); font-variant-numeric: tabular-nums; }
+.indicador__detalle { font-size: .85rem; color: var(--texto-suave); }
+.indicador--alerta { border-color: #f1b5ae; box-shadow: inset 4px 0 0 var(--peligro); }
+.indicador--alerta .indicador__valor { color: #8f1c12; }
+
+/* ---------- Tiempos promedio ---------- */
+.tiempos { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; }
+.tiempos__paso { flex: 1 1 180px; background: #f8fafb; border: 1px solid var(--borde); border-radius: var(--radio-chico); padding: .75rem 1rem; display: flex; flex-direction: column; gap: .2rem; }
+.tiempos__paso span { font-size: .88rem; color: var(--texto-suave); }
+.tiempos__paso strong { font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.tiempos__paso--total { background: #e1edfb; border-color: #b5cff0; }
+.tiempos__flecha { align-self: center; color: var(--texto-suave); font-size: 1.2rem; }
+
+/* ---------- Barras horizontales ---------- */
+.barras { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+.barras__fila { display: grid; grid-template-columns: minmax(120px, 34%) 1fr auto; align-items: center; gap: .75rem; padding: 2px 0; border-radius: 4px; }
+.barras__fila:hover { background: #f3f6f9; }
+.barras__etiqueta { font-size: .94rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.barras__pista { height: 14px; background: #eef2f5; border-radius: 4px; overflow: hidden; }
+.barras__barra { display: block; height: 100%; min-width: 2px; background: #2f62c9; border-radius: 0 4px 4px 0; }
+.barras__valor { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 4.5rem; text-align: right; }
+.barras__valor small { font-weight: 400; color: var(--texto-suave); margin-left: .25rem; }
+
+/* Colores de estado y prioridad: los mismos tonos que las etiquetas (badges) del sistema */
+.barras__barra--pendiente  { background: #c99a1e; }
+.barras__barra--asignado   { background: #3b74c4; }
+.barras__barra--en_proceso { background: #6b4fc4; }
+.barras__barra--resuelto   { background: #2e8b57; }
+.barras__barra--cerrado    { background: #8a9aa0; }
+.barras__barra--baja       { background: #8a9aa0; }
+.barras__barra--media      { background: #3b74c4; }
+.barras__barra--alta       { background: #d9731a; }
+.barras__barra--critica    { background: #c0392b; }
+
+/* ---------- Columnas por día ---------- */
+.columnas__area { display: flex; align-items: flex-end; gap: 2px; height: 160px; border-bottom: 1px solid #b7c3cb; padding-top: .25rem; }
+.columnas__col { flex: 1 1 0; height: 100%; display: flex; align-items: flex-end; border-radius: 3px 3px 0 0; }
+.columnas__col:hover { background: #eef2f5; }
+.columnas__barra { display: block; width: 100%; max-width: 28px; margin: 0 auto; background: #2f62c9; border-radius: 4px 4px 0 0; min-height: 3px; }
+.columnas__ejes { display: flex; gap: 2px; margin-top: .3rem; }
+.columnas__fecha { flex: 1 1 0; font-size: .75rem; color: var(--texto-suave); white-space: nowrap; overflow: visible; }
+.columnas__nota { font-size: .85rem; color: var(--texto-suave); margin: .6rem 0 0; }
+
+.solo-imprimir { display: none; }
+
+@media (max-width: 600px) {
+  .barras__fila { grid-template-columns: 1fr auto; }
+  .barras__pista { grid-column: 1 / -1; grid-row: 2; }
+  .tiempos__flecha { display: none; }
+}
+
+/* ---------- Impresión / Guardar como PDF ---------- */
+@media print {
+  .menu, .no-imprimir { display: none !important; }
+  .app { display: block; }
+  .contenido { padding: 0; max-width: none; }
+  .solo-imprimir { display: inline; }
+  .tarjeta, .indicador { break-inside: avoid; box-shadow: none; }
+  .barras__barra, .columnas__barra { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .reporte--actualizando { opacity: 1; }
+  a { color: inherit; text-decoration: none; }
+}

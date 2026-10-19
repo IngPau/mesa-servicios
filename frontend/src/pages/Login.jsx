@@ -19,7 +19,7 @@ export default function Login() {
     setEnviando(true);
     try {
       await login(usuario.trim(), password);
-      navigate('/tickets', { replace: true });
+      navigate('/', { replace: true });
     } catch (err) {
       setError(mensajeDeError(err));
     } finally {
